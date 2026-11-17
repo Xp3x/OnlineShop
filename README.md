@@ -31,8 +31,10 @@ Du brauchst Node.js mit npm, JDK 17 und PostgreSQL. Das Backend erwartet die Dat
 ```powershell
 cd shop_backend
 $env:SPRING_DATASOURCE_PASSWORD = '<lokales Datenbankpasswort>'
-# Für den Checkout zusätzlich PAYPAL_CLIENT_ID und PAYPAL_CLIENT_SECRET setzen.
-.\mvnw.cmd spring-boot:run
+# Fuer PayPal-Zahlungen zusaetzlich PAYPAL_CLIENT_ID und PAYPAL_CLIENT_SECRET setzen.
+$env:MAVEN_OPTS = '-Djavax.net.ssl.trustStoreType=Windows-ROOT -Djavax.net.ssl.trustStore=NONE'
+.\mvnw.cmd -DskipTests package
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\start.ps1
 ```
 
 **Frontend starten.** Öffne ein zweites Terminal im Repository-Hauptverzeichnis:
@@ -40,10 +42,12 @@ $env:SPRING_DATASOURCE_PASSWORD = '<lokales Datenbankpasswort>'
 ```powershell
 cd frontend
 npm.cmd ci
-npm.cmd run dev
+npm.cmd run dev -- --host 127.0.0.1
 ```
 
-Öffne den [Shop](http://localhost:5173) im Browser. Die Produktdaten liefert die [REST-API](http://localhost:8080/api/products).
+Oeffne den [Shop](http://127.0.0.1:5173) im Browser. Die Produktdaten liefert die [REST-API](http://localhost:8080/api/products).
+
+Die Backend-Startklasse liegt unter `shop_backend/src/main/java/com/example/shop_backend/ShopBackendApplication.java`.
 
 ## Projektstruktur
 
@@ -53,4 +57,11 @@ npm.cmd run dev
 | `shop_backend/` | Spring-Boot-REST-API mit Maven Wrapper |
 | `db/` | SQL-Skript für Datenbankberechtigungen |
 
-Für die Backend-Entwicklung in IntelliJ kannst du `shop_backend/pom.xml` als Maven-Projekt importieren.
+Es gibt kein Maven-Projekt im Hauptverzeichnis. In IntelliJ `shop_backend/pom.xml` als Maven-Projekt importieren. Frontend und Backend werden separat gestartet.
+## PayPal unter Windows
+
+`shop_backend/start.ps1` startet die gebaute JAR mit dem Windows-Zertifikatsspeicher. Die TLS-Zertifikatspruefung bleibt aktiviert. Die JVM-Optionen gelten nur fuer den gestarteten Prozess. Die ExecutionPolicy-Option oben gilt ebenfalls nur fuer diesen PowerShell-Aufruf.
+
+Die lokalen PayPal-Rueckleitungen verwenden standardmaessig `http://localhost:8080` fuer das Backend und `http://127.0.0.1:5173` fuer das Frontend. Andere Adressen koennen ueber `PAYPAL_APP_BASE_URL` und `PAYPAL_UI_BASE_URL` gesetzt werden; jeweils mit Protokoll und Port. Das Frontend unter der konfigurierten Adresse oeffnen, damit die Browser-Client-ID bei der Rueckkehr erhalten bleibt.
+
+`PAYPAL_CLIENT_ID` und `PAYPAL_CLIENT_SECRET` muessen fuer die konfigurierte Sandbox gesetzt sein. Zugangsdaten gehoeren nicht ins Repository.
