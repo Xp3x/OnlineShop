@@ -1,4 +1,4 @@
-﻿# OnlineShop
+# OnlineShop
 
 Vue-Frontend und Spring-Boot-Backend.
 
@@ -6,7 +6,7 @@ Vue-Frontend und Spring-Boot-Backend.
 
 Voraussetzungen: Node.js, JDK 17 und PostgreSQL mit Datenbank `shopdb` und Benutzer `shop`. Das Datenbankschema und die Produktdaten muessen bereits vorhanden sein; `db/setup.sql` richtet nur Berechtigungen ein.
 
-Backend aus `shop_backend` starten (nicht aus dem Maven-Projekt im Hauptverzeichnis):
+Backend aus `shop_backend` starten:
 
 ```powershell
 cd shop_backend
@@ -26,3 +26,11 @@ npm.cmd run dev
 Frontend: http://localhost:5173; Backend: http://localhost:8080/api/products.
 
 Die Backend-Startklasse liegt unter `shop_backend/src/main/java/com/example/shop_backend/ShopBackendApplication.java`.
+
+## Projektstruktur
+
+- `frontend/`: Vue-Anwendung mit eigenem npm-Build.
+- `shop_backend/`: eigenstaendige Spring-Boot-Anwendung mit Maven Wrapper und JDK 17.
+- `db/`: SQL fuer Datenbankberechtigungen.
+
+Es gibt kein Maven-Projekt im Hauptverzeichnis. In IntelliJ `shop_backend/pom.xml` als Maven-Projekt importieren. Frontend und Backend werden separat gestartet.
