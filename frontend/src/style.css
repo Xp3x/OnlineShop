@@ -1,0 +1,271 @@
+body {
+  margin: 0px;
+  font-family: Arial, sans-serif;
+  display: flex;
+}
+
+
+
+main {
+  margin-left: 120px; /* z.B. weniger Abstand */
+  padding: 10px;
+  flex: 1;
+
+}
+
+
+.logo {
+  width: 150px;
+}
+
+.router-link-active {text-decoration: blue;}
+
+nav a {
+  text-decoration: none;
+  color: #333;
+  padding: 10px 15px;
+  border-radius: 6px;
+  transition: background 0.3s;
+}
+
+nav a:hover {
+  background-color: #f0f0f0;
+}
+
+nav a.router-link-active {
+  background-color: #007BFF;
+  color: white;
+}
+
+.produktkarte {
+  border:  black solid 1px ;
+  border-radius: 10px;
+  background-color:white;
+  width: 300px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin: 20px;
+}
+.products-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+
+.button {
+  width: fit-content;
+  text-align: center;
+  padding: 10px;
+  background: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: bold;
+  transition: background 0.2s;
+  text-decoration: none;
+  margin: 10px;
+  display: inline-block;
+}
+.products-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover; /* schöner Zuschnitt */
+  border-radius: 10px;
+  display: block;
+}
+.button:hover {
+  background-color: deepskyblue;
+}
+.products-img-detail {
+  width: 100%;
+  height: auto;
+  object-fit: cover; /* schöner Zuschnitt */
+  border-radius: 10px;
+  display: block;
+  border:  black solid 1px ;
+
+}
+.title-price{
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-top: 20px;
+}
+.title-price .Preis{
+  color: blue;
+}
+.product-detail-container {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  width: 100%;
+
+
+
+}
+.detail-info{
+  border-collapse: collapse;
+  width: 100%;
+  border:  black solid 1px ;
+
+
+}
+.detail-info th{
+  text-align: left;
+  padding: 20px;
+  background-color: lightgrey;
+}
+.detail-info td {
+  padding: 10px;
+}
+.product-info {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column; /* Tabelle oben, Größen darunter */
+  gap: 16px;
+
+
+}
+.groessen-auswahl{
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  font-weight: 600;
+  gap: 10px;
+}
+.image-price-title{
+  max-width: 100%;
+  flex: 0 0 700px;
+}
+
+.groessen-label {
+  font-weight: 700;
+  font-size: 1rem;
+}
+.groessen-auswahl-dropdown {
+  font-size: 1rem;
+  padding: 10px;
+  border:  black solid 1px ;
+  border-radius: 10px;
+  width: 200px;
+  max-width: 100%;
+  transition: box-shadow 0.3s;
+}
+
+
+.groessen-auswahl-dropdown:focus {
+  border-color: #007BFF;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, .15);
+}
+
+
+
+
+
+
+
+.detail-info{
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.Login {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px 25px;
+  margin: 40px auto;
+  background: #f9f9f9;
+  width: 320px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+
+
+.Login label {
+  font-weight: bold;
+  margin-bottom: 4px;
+  font-size: 14px;
+  color: #333;
+}
+
+
+.Login input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.Login input:focus {
+  border-color: #007BFF;
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.4);
+  outline: none;
+}
+
+
+
+
+.Login .button:hover {
+  background: #0056b3;
+}
+
+.card{
+  border:1px solid #ddd; border-radius:12px; padding:1rem; background:#fff;
+}
+
+.container{
+  width:1400px;
+  margin: 4rem auto;
+  text-align: center;
+  padding: 0 1rem;
+  border: 1px #333333;
+
+}
+.container-text{
+  margin:3rem auto;
+  max-width:70ch;
+  border: 1px #333333;
+
+}
+
+.Comment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px 25px;
+  background: #f9f9f9;
+  margin-top: 50px;
+
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+  width: 100%;
+}
+
+.Comment-form label {
+  font-weight: bold;
+  margin-bottom: 4px;
+  font-size: 20px;
+  color: #333;
+}
+
+
+.Comment-form input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+
+
+
